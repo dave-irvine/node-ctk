@@ -1,8 +1,8 @@
 {
-  "name": "clu",
+  "name": "ctk",
   "version": "0.0.1",
-  "description": "Command line utilities for node.js",
-  "main": "src/CLU.js",
+  "description": "Command toolkit for node.js",
+  "main": "src/CTK.js",
   "dependencies": {
     "q": "~0.9.7"
   },
@@ -17,11 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dave-irvine/node-clu.git"
+    "url": "git://github.com/dave-irvine/node-ctk.git"
   },
   "author": "Dave Irvine <dave@daveirvine.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dave-irvine/node-clu/issues"
+    "url": "https://github.com/dave-irvine/node-ctk/issues"
   }
 }

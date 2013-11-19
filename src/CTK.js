@@ -1,11 +1,11 @@
 /* jshint node: true */
 "use strict";
 
-var CLU = {},
+var CTK = {},
 	exec = require("child_process").exec,
 	Q = require("q");
 
-CLU.convertOptionsToArgv = function (options) {
+CTK.convertOptionsToArgv = function (options) {
 	var key,
 		val,
 		argv = [];
@@ -33,7 +33,7 @@ CLU.convertOptionsToArgv = function (options) {
 	return argv.join(" ");
 };
 
-CLU.convertArgvToOptionsAndParams = function (argv, options, params) {
+CTK.convertArgvToOptionsAndParams = function (argv, options, params) {
 	var dashRegex = /^(-+)([^=]+)?=?(.+)/;
 
 	options = options || {};
@@ -79,7 +79,7 @@ CLU.convertArgvToOptionsAndParams = function (argv, options, params) {
 	});
 };
 
-CLU.outputIter = function (output, callback) {
+CTK.outputIter = function (output, callback) {
 	var lines = output.split("\n"),
 		line;
 
@@ -96,7 +96,7 @@ CLU.outputIter = function (output, callback) {
 	}
 };
 
-CLU.exec = function (workdir, bin, args) {
+CTK.exec = function (workdir, bin, args) {
 	var deferred = Q.defer(),
 		bash;
 
@@ -120,4 +120,4 @@ CLU.exec = function (workdir, bin, args) {
 	return deferred.promise;
 };
 
-module.exports = CLU;
+module.exports = CTK;
