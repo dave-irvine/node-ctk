@@ -1,15 +1,16 @@
-/*jslint node: true */
+/* jshint node: true */
 "use strict";
 
-var exec = require('child_process').exec,
-	Q = require("q"),
-	CLU = {};
+var CLU = {},
+	exec = require("child_process").exec,
+	Q = require("q");
 
 CLU.convertOptionsToArgv = function (options) {
 	var key,
 		val,
-		argv = [],
-		options = options || {};
+		argv = [];
+
+	options = options || {};
 
 	for (key in options) {
 		val = options[key];
@@ -33,9 +34,10 @@ CLU.convertOptionsToArgv = function (options) {
 };
 
 CLU.convertArgvToOptionsAndParams = function (argv, options, params) {
-	var dashRegex = /^(-+)([^=]+)?=?(.+)/,
-		options = options || {},
-		params = params || [];
+	var dashRegex = /^(-+)([^=]+)?=?(.+)/;
+
+	options = options || {};
+	params = params || [];
 
 	argv.forEach(function (arg) {
 		var dashCount = 0,
@@ -47,7 +49,7 @@ CLU.convertArgvToOptionsAndParams = function (argv, options, params) {
 			dashRegexMatches = dashRegex.exec(arg);
 			dashCount = dashRegexMatches[1].split("-").length - 1;
 			argName = dashRegexMatches[2];
-			argValue = dashRegexMatches[3].replace(/^\s+|\s+$/g, '');
+			argValue = dashRegexMatches[3].replace(/^\s+|\s+$/g, "");
 		}
 
 		if (dashCount === 1) {
@@ -56,7 +58,7 @@ CLU.convertArgvToOptionsAndParams = function (argv, options, params) {
 				argValue = "";
 			}
 
-			argName = argName.replace(/^\s+|\s+$/g, '');
+			argName = argName.replace(/^\s+|\s+$/g, "");
 
 			if (argValue === "") {
 				options[argName] = true;
@@ -108,7 +110,7 @@ CLU.exec = function (workdir, bin, args) {
 			maxBuffer: 500 * 1024
 		}, function (error, stdout, stderr) {
 			if (error) {
-				deferred.reject(error);
+				deferred.reject(error + " " + stderr);
 			} else {
 				deferred.resolve(stdout);
 			}
