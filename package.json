@@ -1,5 +1,5 @@
 {
-  "name": "CLU",
+  "name": "clu",
   "version": "0.0.1",
   "description": "Command line utilities for node.js",
   "main": "src/CLU.js",
